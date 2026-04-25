@@ -1,4 +1,4 @@
-# Kainan Liu (刘恺楠)
+# Kainan Liu
 
 **AI Researcher & Engineer** specializing in efficient NLP and AI Agents
 
