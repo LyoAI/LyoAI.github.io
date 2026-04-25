@@ -413,12 +413,12 @@ body {
 .pub-card:hover::before { opacity: 1; }
 .pub-card-inner {
     display: grid;
-    grid-template-columns: 180px 1fr;
+    grid-template-columns: 200px 1fr;
     gap: 0;
     position: relative; z-index: 1;
 }
 .pub-thumb {
-    width: 180px;
+    width: 200px;
     aspect-ratio: 3/4;
     background: linear-gradient(135deg, #e8ebe4, #e0e5d9);
     display: flex; align-items: center; justify-content: center;
@@ -520,7 +520,7 @@ body {
     text-align: center;
 }
 .pub-figure img {
-    max-width: 70%;
+    max-width: 85%;
     border-radius: var(--radius-sm);
     border: 1px solid var(--border);
 }
@@ -655,6 +655,7 @@ body {
     .page { padding: 24px 20px; }
     .pub-card-inner { grid-template-columns: 1fr; }
     .pub-thumb { width: 100%; aspect-ratio: 16/9; min-height: auto; }
+    .pub-thumb img { object-position: top center; }
     .pub-body { padding: 20px; }
     .content-card { padding: 24px; }
     .profile-card { padding: 24px 20px; }
