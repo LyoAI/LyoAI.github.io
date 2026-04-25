@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%238a9a8b'/%3E%3Cpath d='M16 4l7 6v2H9v-2z' fill='%23f5f1ed'/%3E%3Crect x='11' y='14' width='10' height='12' rx='1' fill='%23f5f1ed'/%3E%3Crect x='13' y='16' width='3' height='2' rx='.5' fill='%238a9a8b'/%3E%3Crect x='17' y='16' width='2' height='2' rx='.5' fill='%238a9a8b'/%3E%3C/svg%3E">
 </head>
 <body>
 
@@ -92,37 +93,30 @@
                     <button class="pub-expand-btn" data-pub="astra">
                         Show Details <span class="expand-arrow">▼</span>
                     </button>
+                </div>
+            </div>
 
-                    <div class="pub-details" id="astra-details">
-                        <div class="pub-section">
-                            <h4 class="pub-section-title">Key Methodology</h4>
-                            <p>Astra operates by identifying tail eigenvectors in the activation covariance matrix of large language models, then only fine-tuning along these directions. This approach significantly reduces the number of trainable parameters while maintaining or improving performance across various downstream tasks.</p>
-                            <!-- <div class="pub-figure">
-                                <img src="assets/astra-method.png" alt="Astra Methodology Diagram">
-                                <p class="pub-figure-caption">Figure 1: Overview of the Astra adaptation pipeline</p>
-                            </div> -->
-                        </div>
+            <div class="pub-details" id="astra-details">
+                <div class="pub-section">
+                    <h4 class="pub-section-title">🔍 Overview</h4>
+                    <p>In this work, we propose Astra (Activation-Space Tail-Eigenvector Low-Rank Adaptation), a novel PEFT method that leverages the tail eigenvectors of the model output activations—estimated from a small task-specific calibration set—to construct task-adaptive low-rank adapters. By constraining updates to the subspace spanned by these tail eigenvectors, Astra achieves faster convergence and improved downstream performance with a significantly reduced parameter budget.</p>
+                    <div class="pub-figure">
+                        <img src="assets/images/Astra-1.png" alt="Astra Overview 1">
+                    </div>
+                    <div class="pub-figure">
+                        <img src="assets/images/Astra-2.png" alt="Astra Overview 2">
+                    </div>
+                </div>
 
-                        <div class="pub-section">
-                            <h4 class="pub-section-title">Key Results</h4>
-                            <ul>
-                                <li>Outperforms standard LoRA by 3-5% on 8 out of 12 NLP benchmarks</li>
-                                <li>Uses 40% fewer parameters than comparable LoRA approaches</li>
-                                <li>No inference overhead compared to full fine-tuning</li>
-                            </ul>
-                        </div>
-
-                        <div class="pub-section">
-                            <h4 class="pub-section-title">Citation</h4>
-                            <div class="citation-block">
+                <div class="pub-section">
+                    <h4 class="pub-section-title">Citation</h4>
+                    <div class="citation-block">
 <pre>@article{liu2026astra,
   title={Astra: Activation-Space Tail-Eigenvector Low-Rank Adaptation of Large Language Models},
-  author={Liu, Kainan and others},
-  journal={Findings of the Association for Computational Linguistics: ACL 2026},
+  author={Liu, Kainan and Zhang, Yong and Cheng, Ning and Zhu, Yun and Wang, Yanmeng and Wang, Shaojun and Xiao, Jing},
+  journal={arXiv preprint arXiv:2602.19111},
   year={2026}
 }</pre>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -160,37 +154,28 @@
                     <button class="pub-expand-btn" data-pub="grasp">
                         Show Details <span class="expand-arrow">▼</span>
                     </button>
+                </div>
+            </div>
 
-                    <div class="pub-details" id="grasp-details">
-                        <div class="pub-section">
-                            <h4 class="pub-section-title">Key Methodology</h4>
-                            <p>GRASP (Gradient-based Redundancy-Aware Structured Pruning) identifies redundant transformer layers by analyzing gradient flow during fine-tuning, then replaces them with lightweight singular value decomposition (SVD) projections. This approach maintains model performance while significantly reducing inference latency and memory usage.</p>
-                            <!-- <div class="pub-figure">
-                                <img src="assets/grasp-method.png" alt="GRASP Methodology Diagram">
-                                <p class="pub-figure-caption">Figure 1: GRASP layer replacement pipeline</p>
-                            </div> -->
-                        </div>
+            <div class="pub-details" id="grasp-details">
+                <div class="pub-section">
+                    <h4 class="pub-section-title">🔍 Overview</h4>
+                    <p>Recent studies have demonstrated that many layers are functionally redundant in large language models (LLMs), enabling model compression by removing these layers to reduce inference cost. While such approaches can improve efficiency, indiscriminate layer pruning often results in significant performance degradation. In this paper, we propose GRASP (Gradient-based Retention of Adaptive Singular Parameters), a novel compression framework that mitigates this issue by preserving sensitivity-aware singular values. By replacing redundant layers with only a minimal set of parameters, GRASP achieves efficient compression while maintaining strong performance with minimal overhead.</p>
+                    <div class="pub-figure">
+                        <img src="assets/images/GRASP-1.png" alt="GRASP Overview">
+                    </div>
+                </div>
 
-                        <div class="pub-section">
-                            <h4 class="pub-section-title">Key Results</h4>
-                            <ul>
-                                <li>Reduces model size by 50% with less than 1% performance degradation</li>
-                                <li>Improves inference speed by 2.3x on commodity hardware</li>
-                                <li>Outperforms existing pruning methods by 12% on average across NLP tasks</li>
-                            </ul>
-                        </div>
-
-                        <div class="pub-section">
-                            <h4 class="pub-section-title">Citation</h4>
-                            <div class="citation-block">
-<pre>@article{liu2025grasp,
+                <div class="pub-section">
+                    <h4 class="pub-section-title">Citation</h4>
+                    <div class="citation-block">
+<pre>@inproceedings{liu2025grasp,
   title={GRASP: Replace Redundant Layers with Adaptive Singular Parameters for Efficient Model Compression},
-  author={Liu, Kainan and others},
-  journal={Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing},
+  author={Liu, Kainan and Zhang, Yong and Cheng, Ning and Li, Zhitao and Wang, Shaojun and Xiao, Jing},
+  booktitle={Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing},
+  pages={26344--26359},
   year={2025}
 }</pre>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -228,41 +213,34 @@
                     <button class="pub-expand-btn" data-pub="stands">
                         Show Details <span class="expand-arrow">▼</span>
                     </button>
+                </div>
+            </div>
 
-                    <div class="pub-details" id="stands-details">
-                        <div class="pub-section">
-                            <h4 class="pub-section-title">Key Methodology</h4>
-                            <p>STANDS (Spatial Transcriptomics Anomaly Detection and Segmentation) combines graph neural networks with statistical modeling to identify anomalous tissue regions in spatial transcriptomics data. It leverages both gene expression profiles and spatial neighborhood information to detect molecular signatures associated with disease pathology.</p>
-                            <!-- <div class="pub-figure">
-                                <img src="assets/stands-method.png" alt="STANDS Methodology Diagram">
-                                <p class="pub-figure-caption">Figure 1: STANDS spatial anomaly detection pipeline</p>
-                            </div> -->
-                        </div>
+            <div class="pub-details" id="stands-details">
+                <div class="pub-section">
+                    <h4 class="pub-section-title">🔍 Overview</h4>
+                    <p>STANDS is a GAN-based multi-task deep learning framework, which can detect and dissect anomalous tissue domains (DDATD) with Spatial Transcriptomics or scRNA-seq.</p>
+                    <div class="pub-figure">
+                        <img src="assets/images/STANDS-1.png" alt="STANDS Overview 1">
+                    </div>
+                    <div class="pub-figure">
+                        <img src="assets/images/STANDS-2.png" alt="STANDS Overview 2">
+                    </div>
+                </div>
 
-                        <div class="pub-section">
-                            <h4 class="pub-section-title">Key Results</h4>
-                            <ul>
-                                <li>Achieves 94% accuracy in detecting tumor regions in breast cancer spatial transcriptomics data</li>
-                                <li>Identifies novel disease-associated cell subpopulations with spatial localization</li>
-                                <li>Outperforms existing methods by 18% on spatial anomaly detection benchmarks</li>
-                            </ul>
-                        </div>
-
-                        <div class="pub-section">
-                            <h4 class="pub-section-title">Citation</h4>
-                            <div class="citation-block">
-<pre>@article{liu2024stands,
-  title={Detecting and dissecting anomalous anatomic regions in spatial transcriptomics with STANDS},
-  author={Liu, Kainan and others},
+                <div class="pub-section">
+                    <h4 class="pub-section-title">Citation</h4>
+                    <div class="citation-block">
+<pre>@article{xu2024detecting,
+  title={Detecting anomalous anatomic regions in spatial transcriptomics with {STANDS}},
+  author={Xu, Kaichen and Lu, Yan and Hou, Suyang and Liu, Kainan and Du, Yihang and Huang, Mengqian and Feng, Hao and Wu, Hao and Sun, Xiaobo},
   journal={Nature Communications},
   volume={15},
   number={1},
-  pages={1--14},
+  pages={8223},
   year={2024},
-  publisher={Nature Publishing Group}
+  publisher={Nature Publishing Group UK London}
 }</pre>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
