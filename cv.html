@@ -72,6 +72,16 @@
             margin-bottom: 12px;
         }
 
+        /* ── CV Link Colors (Morandi palette) ── */
+        .cv-page a {
+            color: var(--cv-heading);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+        .cv-page a:hover {
+            color: var(--text-primary);
+        }
+
         /* ── Contact Grid ── */
         .cv-contact {
             display: grid;
@@ -97,18 +107,16 @@
             flex-shrink: 0;
             color: var(--accent);
         }
-            color: var(--accent);
-        }
 
         .cv-contact-value {
             font-size: var(--cv-body);
-            color: var(--text-secondary);
+            color: var(--cv-heading);
             text-decoration: none;
             transition: color 0.15s;
         }
 
         .cv-contact-value:hover {
-            color: var(--accent);
+            color: var(--text-primary);
         }
 
         /* ── Photo ── */
@@ -320,10 +328,10 @@
         @media print {
             @page {
                 size: A4;
-                margin: 14mm 16mm;
+                margin: 0;
             }
 
-            body { background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            body { background: white; color: #000; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
             .site-header,
             .scroll-progress,
@@ -332,10 +340,13 @@
             }
 
             .cv-page {
-                padding: 0;
+                padding: 14mm 16mm;
                 max-width: none;
                 background: white;
             }
+
+            .cv-page a { color: #6d7f6e; }
+            .cv-page a:hover { color: #000; }
 
             .cv-header {
                 margin-bottom: 14px;
@@ -343,8 +354,8 @@
                 border-bottom-color: #555;
             }
 
-            .cv-header h1 { font-size: 24px; }
-            .cv-header .subtitle { font-size: 11.5px; margin-bottom: 8px; }
+            .cv-header h1 { font-size: 24px; color: #000; }
+            .cv-header .subtitle { font-size: 11.5px; margin-bottom: 8px; color: #222; }
 
             .cv-photo {
                 width: 80px;
@@ -353,9 +364,9 @@
             }
 
             .cv-contact { gap: 2px 8px; }
-            .cv-contact-label { font-size: 8.5px; }
+            .cv-contact-label { font-size: 8.5px; color: #444; }
             .cv-contact-label svg { width: 10px; height: 10px; }
-            .cv-contact-value { font-size: 9.5px; }
+            .cv-contact-value { font-size: 9.5px; color: #333; }
 
             .cv-section { margin-bottom: 12px; }
             .cv-section-header { margin-bottom: 7px; }
@@ -363,24 +374,24 @@
             .cv-section-header::after { background: #ccc; }
 
             .cv-entry { margin-bottom: 6px; }
-            .cv-entry-title { font-size: 10px; }
-            .cv-entry-date { font-size: 8.5px; }
-            .cv-entry-sub { font-size: 9px; }
+            .cv-entry-title { font-size: 10px; color: #000; }
+            .cv-entry-date { font-size: 8.5px; color: #444; }
+            .cv-entry-sub { font-size: 9px; color: #222; }
             .cv-entry-details { margin: 1px 0 0; }
-            .cv-entry-details li { font-size: 9px; line-height: 1.4; }
+            .cv-entry-details li { font-size: 9px; line-height: 1.4; color: #000; }
 
             .cv-pub { margin-bottom: 6px; }
-            .cv-pub-title { font-size: 10.5px; }
-            .cv-pub-venue { font-size: 8.5px; }
-            .cv-pub-authors { font-size: 9px; }
-            .cv-pub-desc { font-size: 9px; }
-            .cv-pub-note { font-size: 8.5px; margin-top: 2px; }
+            .cv-pub-title { font-size: 10.5px; color: #6d7f6e; }
+            .cv-pub-venue { font-size: 8.5px; color: #6d7f6e; }
+            .cv-pub-authors { font-size: 9px; color: #222; }
+            .cv-pub-desc { font-size: 9px; color: #000; }
+            .cv-pub-note { font-size: 8.5px; margin-top: 2px; color: #444; }
 
             .cv-skills { grid-template-columns: 80px 1fr; gap: 1px 10px; }
-            .cv-skills-label { font-size: 9px; }
-            .cv-skills-content { font-size: 9px; }
+            .cv-skills-label { font-size: 9px; color: #000; }
+            .cv-skills-content { font-size: 9px; color: #222; }
 
-            .cv-footer { margin-top: 8px; padding-top: 6px; font-size: 8.5px; border-top-color: #ccc; }
+            .cv-footer { margin-top: 8px; padding-top: 6px; font-size: 8.5px; color: #555; border-top-color: #ccc; }
         }
 
         /* ── Mobile ── */
