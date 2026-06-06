@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curriculum Vitae — Kainan Liu</title>
+    <title>简历 — 刘恺楠</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -11,50 +11,8 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%238a9a8b'/%3E%3Crect x='8' y='7' width='16' height='18' rx='2' fill='%23f5f1ed'/%3E%3Crect x='11' y='11' width='10' height='1.5' rx='.75' fill='%238a9a8b'/%3E%3Crect x='11' y='14.5' width='8' height='1.5' rx='.75' fill='%238a9a8b'/%3E%3Crect x='11' y='18' width='10' height='1.5' rx='.75' fill='%238a9a8b'/%3E%3Crect x='11' y='21.5' width='6' height='1.5' rx='.75' fill='%238a9a8b'/%3E%3C/svg%3E">
     <style>
         /* ══════════════════════════════════════════════
-           CV — Refined Academic
+           CV — Refined Academic (Chinese)
            ══════════════════════════════════════════════ */
-
-        /* ── Language Switch ── */
-        .lang-switch {
-            position: fixed;
-            top: 122px;
-            right: 24px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 11px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            z-index: 100;
-        }
-
-        .lang-switch a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 2px 6px;
-            border-radius: 4px;
-            transition: all 0.2s;
-        }
-
-        .lang-switch a:hover {
-            color: var(--text-primary);
-        }
-
-        .lang-switch a.active-lang {
-            color: var(--accent);
-            background: var(--accent-glow);
-        }
-
-        .lang-switch .sep {
-            color: var(--border);
-        }
-
-        @media (max-width: 700px) {
-            .lang-switch { top: 116px; right: 12px; }
-        }
 
         :root {
             --cv-name: 33px;
@@ -364,6 +322,44 @@
             height: 14px;
         }
 
+        /* ── Language Switch ── */
+        .lang-switch {
+            position: fixed;
+            top: 122px;
+            right: 24px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            z-index: 100;
+        }
+
+        .lang-switch a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 2px 6px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .lang-switch a:hover {
+            color: var(--text-primary);
+        }
+
+        .lang-switch a.active-lang {
+            color: var(--accent);
+            background: var(--accent-glow);
+        }
+
+        .lang-switch .sep {
+            color: var(--border);
+        }
+
         /* ══════════════════════════════════════════════
            PRINT — A4 Single Page
            ══════════════════════════════════════════════ */
@@ -466,7 +462,7 @@
                     <li><a href="index.html">About</a></li>
                     <li><a href="publications.html">Publications</a></li>
                     <li><a href="experience.html">Experience</a></li>
-                    <li><a href="cv.html" class="active">CV</a></li>
+                    <li><a href="cv.html">CV</a></li>
                     <li>
                         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                             <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -497,14 +493,14 @@
             <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
             <rect x="6" y="14" width="12" height="8"></rect>
         </svg>
-        Download CV
+        下载简历
     </button>
 
     <!-- Language Switch -->
     <div class="lang-switch">
-        <a href="cv.html" class="active-lang">EN</a>
+        <a href="cv.html">EN</a>
         <span class="sep">|</span>
-        <a href="cv-zh.html">中文</a>
+        <a href="cv-zh.html" class="active-lang">中文</a>
     </div>
 
     <div class="cv-page">
@@ -512,145 +508,145 @@
         <!-- ═══ Header ═══ -->
         <header class="cv-header">
             <div class="cv-header-main">
-                <h1>Kainan Liu</h1>
-                <p class="subtitle">AI Researcher &amp; Algorithm Engineer</p>
+                <h1>刘恺楠</h1>
+                <p class="subtitle">人工智能研究员 &amp; 工程师</p>
                 <div class="cv-contact">
-                    <span class="cv-contact-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>Email</span>
+                    <span class="cv-contact-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>邮箱</span>
                     <a href="mailto:kliu341@connect.hkust-gz.edu.cn" class="cv-contact-value">kliu341@connect.hkust-gz.edu.cn</a>
                     <span class="cv-contact-label"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</span>
                     <a href="https://github.com/LyoAI" class="cv-contact-value">github.com/LyoAI</a>
-                    <span class="cv-contact-label"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14Zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5 12 0Z"/></svg>Scholar</span>
+                    <span class="cv-contact-label"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14Zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5 12 0Z"/></svg>学术</span>
                     <a href="https://scholar.google.com/citations?hl=en&user=ypJ38D4AAAAJ" class="cv-contact-value">Google Scholar</a>
                     <span class="cv-contact-label"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-3.903-3.722h-2.416z"/></svg>ORCID</span>
                     <a href="https://orcid.org/0009-0004-0299-8799" class="cv-contact-value">0009-0004-0299-8799</a>
                 </div>
             </div>
             <div class="cv-photo">
-                <img src="assets/me.JPG" alt="Kainan Liu">
+                <img src="assets/me.JPG" alt="刘恺楠">
             </div>
         </header>
 
-        <!-- ═══ Education ═══ -->
+        <!-- ═══ 教育经历 ═══ -->
         <section class="cv-section">
             <div class="cv-section-header">
-                <h2>Education</h2>
+                <h2>教育经历</h2>
             </div>
 
             <div class="cv-entry">
                 <div class="cv-entry-top">
-                    <span class="cv-entry-title">The Hong Kong University of Science and Technology (Guangzhou)</span>
+                    <span class="cv-entry-title">香港科技大学（广州）</span>
                     <span class="cv-entry-date">2023 - 2025</span>
                 </div>
-                <div class="cv-entry-sub">M.Sc. in Data-Centric Artificial Intelligence</div>
+                <div class="cv-entry-sub">硕士 · 数据驱动人工智能</div>
             </div>
 
             <div class="cv-entry">
                 <div class="cv-entry-top">
-                    <span class="cv-entry-title">Zhongnan University of Economics and Law</span>
+                    <span class="cv-entry-title">中南财经政法大学</span>
                     <span class="cv-entry-date">2019 - 2023</span>
                 </div>
-                <div class="cv-entry-sub">B.Sc. in Data Science and Big Data Technology</div>
+                <div class="cv-entry-sub">学士 · 数据科学与大数据技术</div>
             </div>
         </section>
 
-        <!-- ═══ Publications ═══ -->
+        <!-- ═══ 发表论文 ═══ -->
         <section class="cv-section">
             <div class="cv-section-header">
-                <h2>Publications</h2>
+                <h2>发表论文</h2>
             </div>
 
             <div class="cv-pub">
                 <div class="cv-pub-title">Astra: Activation-Space Tail-Eigenvector Low-Rank Adaptation of Large Language Models</div>
                 <div class="cv-pub-venue">ACL 2026 Findings</div>
-                <div class="cv-pub-authors">Kainan Liu<sup>*</sup>, Yong Zhang<sup>*</sup>, Ning Cheng<sup>†</sup>, Yun Zhu, Yanmeng Wang, Shaojun Wang, Jing Xiao</div>
-                <div class="cv-pub-desc">Proposes a novel PEFT method that estimates the activation covariance matrix from a task-specific calibration set (as few as 64 samples), performs eigendecomposition to extract the tail eigenvector subspace, and constrains low-rank updates within this weakly-activated subspace to avoid interfering with the pretrained model's dominant representations. Evaluated on 16 benchmarks spanning GLUE, mathematical reasoning, code generation, and commonsense reasoning, Astra significantly outperforms LoRA, DoRA, PiSSA, LoRA-GA and other PEFT methods — achieving substantial gains on CoLA and MRPC where standard LoRA collapses — and surpasses full fine-tuning in certain scenarios. Code open-sourced.</div>
+                <div class="cv-pub-authors">刘恺楠<sup>*</sup>, 张镛<sup>*</sup>, 程宁<sup>†</sup>, 朱运, 王燕蒙, 王少军, 肖京</div>
+                <div class="cv-pub-desc">提出一种新颖的参数高效微调方法，通过任务特定校准数据（仅需64个样本）估计模型输出激活的协方差矩阵，经特征分解提取尾特征向量子空间，将低秩适配器更新约束在该弱激活子空间内，避免干扰预训练模型的 dominant 表征。在 GLUE、数学推理、代码生成和常识推理等 16 个基准上，Astra 显著优于 LoRA、DoRA、PiSSA、LoRA-GA 等现有 PEFT 方法，在 CoLA 和 MRPC 等任务上实现压倒性提升，并在部分场景下超越全参数微调。代码已开源。</div>
             </div>
 
             <div class="cv-pub">
                 <div class="cv-pub-title">GRASP: Replace Redundant Layers with Adaptive Singular Parameters for Efficient Model Compression</div>
-                <div class="cv-pub-venue">EMNLP 2025 Main Conference</div>
-                <div class="cv-pub-authors">Kainan Liu<sup>*</sup>, Yong Zhang<sup>*</sup>, Ning Cheng<sup>†</sup>, Zhitao Li, Shaojun Wang, Jing Xiao</div>
-                <div class="cv-pub-desc">A gradient-guided hybrid compression framework that combines redundant layer identification with adaptive singular parameter selection. It locates functionally redundant Transformer layers via cosine similarity of hidden states between adjacent layers, then uses gradient-attributed importance scores (rather than magnitude-based heuristics) to adaptively retain critical singular components from SVD, replacing full layers with lightweight parameterizations. At 20% compression, it preserves ~90% of original performance across 19 datasets spanning 5 model families (LLaMA, LLaMA 2/3, Mistral-7B), outperforming SliceGPT, LaCo, LLM-Pruner, and others. The compression process is training-free and completes in ~0.16 hours on a single A100 GPU.</div>
+                <div class="cv-pub-venue">EMNLP 2025 主会</div>
+                <div class="cv-pub-authors">刘恺楠<sup>*</sup>, 张镛<sup>*</sup>, 程宁<sup>†</sup>, 李志韬, 王少军, 肖京</div>
+                <div class="cv-pub-desc">一种梯度引导的混合模型压缩框架，结合冗余层识别与自适应奇异参数选择。通过计算相邻层隐藏状态的余弦相似度定位功能冗余的 Transformer 层，利用梯度归因的重要性评分（而非传统的大小阈值）从奇异值分解中自适应保留关键奇异分量，以轻量参数替代完整冗余层。在 20% 压缩率下保持约 90% 的原始模型性能，在 LLaMA、LLaMA 2/3、Mistral-7B 等 5 个模型家族的 19 个数据集上优于 SliceGPT、LaCo、LLM-Pruner 等方法；压缩过程无需训练，单张 A100 GPU 上约 0.16 小时即可完成。</div>
             </div>
 
             <div class="cv-pub">
                 <div class="cv-pub-title">Detecting and dissecting anomalous anatomic regions in spatial transcriptomics with STANDS</div>
                 <div class="cv-pub-venue">Nature Communications</div>
-                <div class="cv-pub-authors">Kaichen Xu<sup>†</sup>, Yan Lu, Suyang Hou, Kainan Liu, Yihang Du, Mengqian Huang, Hao Feng, Hao Wu, Xiaobo Sun<sup>*</sup></div>
-                <div class="cv-pub-desc">A GAN-based multi-task deep learning framework that jointly models gene expression and histology image information for detection, cross-sample alignment, and subtyping of anomalous tissue domains in spatial transcriptomics data. It integrates multi-modal features via graph attention networks and Transformer fusion modules, validated across multiple platforms including 10x Visium, Slide-seqV2, and Stereo-seq. STANDS can detect early-stage cancerous regions visually indistinguishable in histology images, and is the only method that accurately performs cross-sample alignment and anomaly subtyping in multi-sample settings.</div>
+                <div class="cv-pub-authors">徐恺辰<sup>†</sup>, 鲁岩, 侯苏阳, 刘恺楠, 杜艺航, 黄梦倩, 吴浩, 孙晓波<sup>*</sup></div>
+                <div class="cv-pub-desc">一种基于生成对抗网络的多任务深度学习框架，联合建模基因表达与组织学图像信息，实现空间转录组数据中异常组织区域的检测、跨样本对齐与亚型分类。通过图注意力网络和 Transformer 融合模块整合多模态特征，在 10x Visium、Slide-seqV2、Stereo-seq 等多个平台得到验证。STANDS 能够探测组织学图像上肉眼无法分辨的早期癌变区域，且是唯一能够在多样本设定下准确完成跨样本对齐和异常区域亚型分类的方法。</div>
             </div>
-            <p class="cv-pub-note"><sup>*</sup> Equal contribution &nbsp;&nbsp; <sup>†</sup> Corresponding author</p>
+            <p class="cv-pub-note"><sup>*</sup> 共同第一作者 &nbsp;&nbsp; <sup>†</sup> 通讯作者</p>
         </section>
 
-        <!-- ═══ Experience ═══ -->
+        <!-- ═══ 工作经历 ═══ -->
         <section class="cv-section">
             <div class="cv-section-header">
-                <h2>Experience</h2>
+                <h2>工作经历</h2>
             </div>
 
             <div class="cv-entry">
                 <div class="cv-entry-top">
-                    <span class="cv-entry-title">Ping An Technology (Shenzhen) Co., Ltd.</span>
-                    <span class="cv-entry-date">Aug 2025 - Present</span>
+                    <span class="cv-entry-title">平安科技（深圳）有限公司</span>
+                    <span class="cv-entry-date">2025年8月 - 至今</span>
                 </div>
-                <div class="cv-entry-sub">AI Researcher &amp; Algorithm Engineer</div>
+                <div class="cv-entry-sub">人工智能研究员 &amp; 算法工程师</div>
                 <ul class="cv-entry-details">
-                    <li>Training and optimizing LLMs for financial risk control and corporate banking analysis, including domain-adaptive fine-tuning, instruction tuning, and prompt optimization to improve financial NLP task performance</li>
-                    <li>Proposed Astra (ACL 2026 Findings): a low-rank adaptation method based on activation covariance tail-eigen subspaces, requiring only 64 calibration samples to build task-adaptive adapters, outperforming existing PEFT methods on 16 NLU/NLG benchmarks</li>
-                    <li>Building evaluation and monitoring pipelines to track model performance across financial NLP benchmarks</li>
+                    <li>负责金融风控和企业银行分析领域的大语言模型训练与优化，包括领域自适应微调、指令微调和提示优化，提升模型在金融 NLP 任务上的表现</li>
+                    <li>提出 Astra（ACL 2026 Findings）：基于激活协方差矩阵尾特征子空间的低秩适配方法，仅需 64 个校准样本即可构建任务自适应适配器，在 16 个 NLU/NLG 基准上超越现有 PEFT 方法</li>
+                    <li>搭建评估与监控流水线，追踪模型在金融 NLP 基准上的表现</li>
                 </ul>
             </div>
 
             <div class="cv-entry">
                 <div class="cv-entry-top">
-                    <span class="cv-entry-title">Ping An Technology (Shenzhen) Co., Ltd.</span>
-                    <span class="cv-entry-date">Sept 2024 – Aug 2025</span>
+                    <span class="cv-entry-title">平安科技（深圳）有限公司</span>
+                    <span class="cv-entry-date">2024年9月 - 2025年8月</span>
                 </div>
-                <div class="cv-entry-sub">Research Intern</div>
+                <div class="cv-entry-sub">研究实习生</div>
                 <ul class="cv-entry-details">
-                    <li>Conducted research on model compression techniques, focusing on identifying and replacing redundant Transformer layers with parameter-efficient alternatives</li>
-                    <li>Proposed GRASP (EMNLP 2025 Main Conference): a hybrid compression framework combining cosine-similarity-based redundant layer identification with gradient-guided singular value selection, achieving ~90% of original performance at 20% compression across models from LLaMA-7B to LLaMA 3.1-8B</li>
-                    <li>Implemented and systematically evaluated various pruning and compression methods on LLaMA 2-7B/13B, LLaMA 3.1-8B-Instruct, and Mistral-7B, covering 19 benchmark datasets</li>
+                    <li>从事模型压缩技术研究，专注于识别冗余 Transformer 层并以参数高效的替代方案进行替换</li>
+                    <li>提出 GRASP（EMNLP 2025 主会）：结合余弦相似度冗余层识别与梯度引导奇异值选择的混合压缩框架，在 20% 压缩率下保持约 90% 原始性能，在 LLaMA-7B 至 LLaMA 3.1-8B 等模型上优于 SliceGPT 等基线</li>
+                    <li>在 LLaMA 2-7B/13B、LLaMA 3.1-8B-Instruct、Mistral-7B 等模型上实现并系统性评估多种剪枝与压缩方法，覆盖 19 个基准数据集</li>
                 </ul>
             </div>
 
             <div class="cv-entry">
                 <div class="cv-entry-top">
-                    <span class="cv-entry-title">Vipshop (China)</span>
-                    <span class="cv-entry-date">June 2024 – Sept 2024</span>
+                    <span class="cv-entry-title">唯品会（中国）</span>
+                    <span class="cv-entry-date">2024年6月 - 2024年9月</span>
                 </div>
-                <div class="cv-entry-sub">Recommendation Algorithm Intern</div>
+                <div class="cv-entry-sub">推荐算法实习生</div>
                 <ul class="cv-entry-details">
-                    <li>Processed and analyzed large-scale user-item interaction data and behavioral sequences for recommendation system enhancement</li>
-                    <li>Deployed XGBoost models for recommendation ranking optimization, improving key engagement metrics</li>
-                    <li>Developed feature engineering pipelines for extracting user behavior patterns from historical interaction data</li>
+                    <li>处理和分析大规模用户-商品交互数据及行为序列，用于推荐系统优化</li>
+                    <li>部署 XGBoost 模型进行推荐排序优化，提升关键用户参与指标</li>
+                    <li>开发特征工程流水线，从历史交互数据中提取用户行为模式</li>
                 </ul>
             </div>
         </section>
 
-        <!-- ═══ Technical Skills ═══ -->
+        <!-- ═══ 专业技能 ═══ -->
         <section class="cv-section">
             <div class="cv-section-header">
-                <h2>Technical Skills</h2>
+                <h2>专业技能</h2>
             </div>
             <div class="cv-skills">
-                <span class="cv-skills-label">Programming</span>
+                <span class="cv-skills-label">编程语言</span>
                 <span class="cv-skills-content">Python</span>
 
-                <span class="cv-skills-label">Frameworks</span>
+                <span class="cv-skills-label">开发框架</span>
                 <span class="cv-skills-content">PyTorch, PEFT, Transformers, vLLM</span>
 
-                <span class="cv-skills-label">Research Areas</span>
-                <span class="cv-skills-content">PEFT, Model Compression, AI Agents</span>
+                <span class="cv-skills-label">研究领域</span>
+                <span class="cv-skills-content">参数高效微调PEFT, 模型压缩, 智能体</span>
 
-                <span class="cv-skills-label">Languages</span>
-                <span class="cv-skills-content">Chinese (native), English (IELTS 7.0)</span>
+                <span class="cv-skills-label">语言能力</span>
+                <span class="cv-skills-content">中文（母语）, 英语（雅思7分）</span>
             </div>
         </section>
 
         <!-- ═══ Footer ═══ -->
         <footer class="cv-footer">
-            References available upon request · Last updated June 2026
+            推荐信备索 · 最后更新 2026 年 6 月
         </footer>
     </div>
 
