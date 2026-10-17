@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curriculum Vitae — Kainan Liu</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%238a9a8b'/%3E%3Crect x='8' y='7' width='16' height='18' rx='2' fill='%23f5f1ed'/%3E%3Crect x='11' y='11' width='10' height='1.5' rx='.75' fill='%238a9a8b'/%3E%3Crect x='11' y='14.5' width='8' height='1.5' rx='.75' fill='%238a9a8b'/%3E%3Crect x='11' y='18' width='10' height='1.5' rx='.75' fill='%238a9a8b'/%3E%3Crect x='11' y='21.5' width='6' height='1.5' rx='.75' fill='%238a9a8b'/%3E%3C/svg%3E">
     <style>
@@ -466,6 +463,7 @@
                     <li><a href="index.html">About</a></li>
                     <li><a href="publications.html">Publications</a></li>
                     <li><a href="experience.html">Experience</a></li>
+                    <li><a href="blog/index.html">Blog</a></li>
                     <li><a href="cv.html" class="active">CV</a></li>
                     <li>
                         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -654,49 +652,7 @@
         </footer>
     </div>
 
-    <script>
-        // ── Scroll Progress Bar ──
-        const progressBar = document.getElementById('scrollProgress');
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-            progressBar.style.width = progress + '%';
-        });
-
-        // ── Theme Toggle ──
-        const themeToggle = document.getElementById('themeToggle');
-        const iconSun = themeToggle.querySelector('.icon-sun');
-        const iconMoon = themeToggle.querySelector('.icon-moon');
-
-        const savedTheme = localStorage.getItem('theme');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
-
-        document.documentElement.setAttribute('data-theme', initialTheme);
-        updateToggleIcon(initialTheme);
-
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateToggleIcon(newTheme);
-        });
-
-        function updateToggleIcon(theme) {
-            iconSun.style.display = theme === 'dark' ? 'none' : 'block';
-            iconMoon.style.display = theme === 'dark' ? 'block' : 'none';
-        }
-
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            if (!localStorage.getItem('theme')) {
-                const newTheme = e.matches ? 'dark' : 'light';
-                document.documentElement.setAttribute('data-theme', newTheme);
-                updateToggleIcon(newTheme);
-            }
-        });
-    </script>
+    <script src="site.js"></script>
 
 </body>
 </html>

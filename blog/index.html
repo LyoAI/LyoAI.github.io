@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Kainan Liu</title>
+    <meta name="description" content="Movie reviews and AI/ML study notes by Kainan Liu. 影评与 AI/ML 学习笔记。">
+    <meta property="og:title" content="Blog — Kainan Liu">
+    <meta property="og:description" content="Movie reviews and AI/ML study notes by Kainan Liu. 影评与 AI/ML 学习笔记。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lyoai.github.io/blog/">
+    <meta property="og:image" content="https://lyoai.github.io/assets/me.JPG">
+    <meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%238a9a8b'/%3E%3Crect x='9' y='8' width='14' height='16' rx='2' fill='%23f5f1ed'/%3E%3Cline x1='12' y1='12' x2='20' y2='12' stroke='%238a9a8b' stroke-width='1.2'/%3E%3Cline x1='12' y1='15' x2='20' y2='15' stroke='%238a9a8b' stroke-width='1.2'/%3E%3Cline x1='12' y1='18' x2='17' y2='18' stroke='%238a9a8b' stroke-width='1.2'/%3E%3C/svg%3E">
+</head>
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Animated Background Orbs -->
+    <div class="bg-mesh">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <!-- Top Navigation -->
+    <header class="site-header">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo">
+                <span class="nav-logo-dot"></span>
+                <span class="nav-logo-text">Kainan Liu</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">About</a></li>
+                    <li><a href="../publications.html">Publications</a></li>
+                    <li><a href="../experience.html">Experience</a></li>
+                    <li><a href="index.html" class="active">Blog</a></li>
+                    <li><a href="../cv.html">CV</a></li>
+                    <li>
+                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page">
+        <h1 class="page-title">Blog</h1>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- 🎬 Movie Reviews / 影评                       -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section class="section">
+            <div class="section-header">
+                <h2>🎬 Movie Reviews <span style="font-size:16px;color:var(--text-muted);font-weight:400;">/ 影评</span></h2>
+                <div class="section-header-line"></div>
+            </div>
+
+            <div class="blog-grid" id="movieReviewsGrid">
+
+                <!-- Example Movie Review Card -->
+                <a href="posts/movie-reviews/example-movie.html" class="blog-card">
+                    <div class="blog-card-cover">
+                        <div class="blog-card-cover-placeholder">🎬</div>
+                    </div>
+                    <div class="blog-card-body">
+                        <div class="blog-card-meta">
+                            <span class="blog-category-tag">Movie Review</span>
+                            <span class="blog-card-date">2026-06-14</span>
+                        </div>
+                        <div class="blog-card-title">The Shawshank Redemption</div>
+                        <div class="blog-card-title-zh">肖申克的救赎</div>
+                        <div class="blog-card-excerpt">
+                            Hope is a good thing, maybe the best of things — a timeless tale of resilience, friendship, and redemption inside the walls of Shawshank.
+                        </div>
+                        <span class="blog-card-readmore">Read more →</span>
+                    </div>
+                </a>
+
+            </div>
+
+            <!--
+            BUFFER: When you have more than 3 reviews, wrap the extras in:
+            <div class="blog-grid" id="movieReviewsMore" style="display:none;"> ...extra cards... </div>
+            The toggle button below will show/hide them automatically.
+            -->
+            <div class="blog-grid" id="movieReviewsMore" style="display:none;">
+                <!-- BUFFER: Add additional review cards here when you have more than 3 -->
+            </div>
+
+            <button class="news-toggle-btn" id="movieReviewsToggle" style="display:none;margin-top:16px;">
+                Show more <span style="font-size:11px;">▼</span>
+            </button>
+        </section>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- 📝 Study Notes / 学习笔记                   -->
+        <!-- ═══════════════════════════════════════════ -->
+        <section class="section">
+            <div class="section-header">
+                <h2>📝 Study Notes <span style="font-size:16px;color:var(--text-muted);font-weight:400;">/ 学习笔记</span></h2>
+                <div class="section-header-line"></div>
+            </div>
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:18px;">
+                AI / ML learning notes organized by topic. Click a sub-category to browse posts.<br>
+                按主题整理的 AI/ML 学习笔记，点击子分类浏览文章。
+            </p>
+            <div class="subcat-grid">
+                <!-- LLM -->
+                <a href="posts/study-notes/index.html#llm" class="subcat-card">
+                    <span class="subcat-card-emoji">🧠</span>
+                    <span class="subcat-card-name">Large Language Models</span>
+                    <span class="subcat-card-name-zh">大语言模型</span>
+                    <span class="subcat-card-desc">LoRA, PEFT, alignment, inference optimization</span>
+                    <span class="subcat-card-count">1 post</span>
+                </a>
+                <!-- RL -->
+                <a href="posts/study-notes/index.html#rl" class="subcat-card">
+                    <span class="subcat-card-emoji">🔬</span>
+                    <span class="subcat-card-name">Reinforcement Learning</span>
+                    <span class="subcat-card-name-zh">强化学习</span>
+                    <span class="subcat-card-desc">PPO, DPO, GRPO, reward modeling</span>
+                    <span class="subcat-card-count">0 posts</span>
+                </a>
+                <!-- Agents -->
+                <a href="posts/study-notes/index.html#agents" class="subcat-card">
+                    <span class="subcat-card-emoji">🤖</span>
+                    <span class="subcat-card-name">AI Agents</span>
+                    <span class="subcat-card-name-zh">AI 智能体</span>
+                    <span class="subcat-card-desc">Tool use, planning, multi-agent systems</span>
+                    <span class="subcat-card-count">0 posts</span>
+                </a>
+                <!-- CV -->
+                <a href="posts/study-notes/index.html#cv" class="subcat-card">
+                    <span class="subcat-card-emoji">👁️</span>
+                    <span class="subcat-card-name">Computer Vision</span>
+                    <span class="subcat-card-name-zh">计算机视觉</span>
+                    <span class="subcat-card-desc">ViT, diffusion, segmentation, generation</span>
+                    <span class="subcat-card-count">0 posts</span>
+                </a>
+                <!-- ML Basics -->
+                <a href="posts/study-notes/index.html#ml-basics" class="subcat-card">
+                    <span class="subcat-card-emoji">📐</span>
+                    <span class="subcat-card-name">ML Fundamentals</span>
+                    <span class="subcat-card-name-zh">机器学习基础</span>
+                    <span class="subcat-card-desc">Optimization, theory, architectures, training</span>
+                    <span class="subcat-card-count">0 posts</span>
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="../site.js"></script>
+    <script>
+        // ── Movie Reviews Show More / Less ──
+        const movieReviewsMore = document.getElementById('movieReviewsMore');
+        const movieReviewsToggle = document.getElementById('movieReviewsToggle');
+
+        // Only show toggle when there are hidden cards
+        if (movieReviewsMore && movieReviewsMore.children.length > 0) {
+            movieReviewsToggle.style.display = 'inline-flex';
+        }
+
+        movieReviewsToggle.addEventListener('click', () => {
+            const isHidden = movieReviewsMore.style.display === 'none';
+            movieReviewsMore.style.display = isHidden ? '' : 'none';
+            movieReviewsToggle.innerHTML = isHidden
+                ? 'Show less <span style="font-size:11px;">▲</span>'
+                : 'Show more <span style="font-size:11px;">▼</span>';
+        });
+    
+    
+    </script>
+
+</body>
+</html>

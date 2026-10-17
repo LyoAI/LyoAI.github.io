@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoRA: Low-Rank Adaptation — Study Notes — Kainan Liu</title>
+    <meta name="description" content="How low-rank matrices efficiently fine-tune LLMs — the math, the intuition, and why LoRA works so well in practice.">
+    <meta property="og:title" content="LoRA: Low-Rank Adaptation of Large Language Models — Kainan Liu">
+    <meta property="og:description" content="How low-rank matrices efficiently fine-tune LLMs — the math, the intuition, and why LoRA works so well in practice.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://lyoai.github.io/blog/posts/study-notes/llm/example-lora.html">
+    <meta property="og:image" content="https://lyoai.github.io/assets/me.JPG">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="../../../../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%238a9a8b'/%3E%3Crect x='9' y='8' width='14' height='16' rx='2' fill='%23f5f1ed'/%3E%3Cline x1='12' y1='12' x2='20' y2='12' stroke='%238a9a8b' stroke-width='1.2'/%3E%3Cline x1='12' y1='15' x2='20' y2='15' stroke='%238a9a8b' stroke-width='1.2'/%3E%3Cline x1='12' y1='18' x2='17' y2='18' stroke='%238a9a8b' stroke-width='1.2'/%3E%3C/svg%3E">
+</head>
+<body>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <div class="bg-mesh">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="nav-inner">
+            <a href="../../../../index.html" class="nav-logo">
+                <span class="nav-logo-dot"></span>
+                <span class="nav-logo-text">Kainan Liu</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../../../../index.html">About</a></li>
+                    <li><a href="../../../../publications.html">Publications</a></li>
+                    <li><a href="../../../../experience.html">Experience</a></li>
+                    <li><a href="../../../index.html">Blog</a></li>
+                    <li><a href="../../../../cv.html">CV</a></li>
+                    <li>
+                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page">
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- ARTICLE HEADER                         -->
+        <!-- ═══════════════════════════════════════ -->
+        <div class="study-note-header">
+            <span class="blog-category-tag">LLM</span>
+            <h1 class="study-note-title-en">LoRA: Low-Rank Adaptation of Large Language Models</h1>
+            <div class="study-note-title-zh">LoRA：大语言模型的低秩适配</div>
+            <div class="study-note-meta">
+                <span>📅 2026-06-14</span>
+                <span>⏱️ 8 min read</span>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- 1. TL;DR / 概述                         -->
+        <!-- ═══════════════════════════════════════ -->
+        <div class="study-section">
+            <h2>TL;DR <span class="zh">/ 概述</span></h2>
+            <p>
+                LoRA (Low-Rank Adaptation) is a <strong>Parameter-Efficient Fine-Tuning (PEFT)</strong> method that freezes the pre-trained model weights and injects trainable low-rank decomposition matrices into selected layers. By constraining weight updates to a low-rank subspace <code>ΔW = BA</code> where <code>B ∈ ℝ<sup>d×r</sup></code>, <code>A ∈ ℝ<sup>r×k</sup></code> with <code>r ≪ min(d, k)</code>, LoRA reduces trainable parameters by <strong>up to 10,000×</strong> compared to full fine-tuning while maintaining <strong>≥ 95% of full fine-tuning performance</strong>. It adds <strong>zero inference latency</strong> because the low-rank matrices can be merged into the original weights: <code>W' = W + BA</code>.
+            </p>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- 2. BACKGROUND & MOTIVATION              -->
+        <!-- ═══════════════════════════════════════ -->
+        <div class="study-section">
+            <h2>Background &amp; Motivation <span class="zh">/ 背景与动机</span></h2>
+            <p>
+                Full fine-tuning updates <em>all</em> parameters of a pre-trained model for each downstream task. For a 7B-parameter model like LLaMA, this means storing and serving a separate 7B-parameter copy for every task — quickly becoming infeasible in production. Before LoRA, two main approaches existed:
+            </p>
+            <ul>
+                <li><strong>Adapter layers</strong>: Insert small trainable modules between transformer layers. Works well but <em>adds inference latency</em> because adapters cannot be merged into weights.</li>
+                <li><strong>Prefix tuning / Prompt tuning</strong>: Learn soft prompts prepended to the input. Parameter-efficient but takes up valuable context length and underperforms on smaller models.</li>
+            </ul>
+            <p>
+                The key insight of LoRA (Hu et al., 2021) is that the <strong>weight updates during fine-tuning have a low intrinsic rank</strong>. This is inspired by the observation that over-parameterized models reside on a low-dimensional manifold — the "intrinsic dimension" of the task is far smaller than the model's parameter count.
+            </p>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- 3. KEY CONCEPTS                        -->
+        <!-- ═══════════════════════════════════════ -->
+        <div class="study-section">
+            <h2>Key Concepts <span class="zh">/ 核心概念</span></h2>
+
+            <h3>Low-Rank Decomposition</h3>
+            <p>
+                A matrix <code>M ∈ ℝ<sup>m×n</sup></code> of rank <code>r</code> can be factorized as <code>M = UV</code> where <code>U ∈ ℝ<sup>m×r</sup></code> and <code>V ∈ ℝ<sup>r×n</sup></code>. Instead of storing <code>m×n</code> parameters, we store <code>r×(m+n)</code>. For a weight matrix <code>W ∈ ℝ<sup>4096×4096</sup></code> with rank <code>r=8</code>, this reduces parameters from ~16.8M to ~65K — a <strong>256× reduction</strong>.
+            </p>
+
+            <h3>LoRA Forward Pass</h3>
+            <p>For a pre-trained weight matrix <code>W₀ ∈ ℝ<sup>d×k</sup></code>, the LoRA-modified forward pass is:</p>
+            <div class="code-block">
+<span class="comment"># LoRA forward pass</span>
+<span class="keyword">def</span> lora_forward(x):
+    h = W0 @ x                          <span class="comment"># Frozen pre-trained forward pass</span>
+    h += (alpha / r) * (B @ A @ x)      <span class="comment"># Low-rank update, scaled by α/r</span>
+    <span class="keyword">return</span> h
+            </div>
+            <p>Where <code>A</code> is initialized with a random Gaussian distribution and <code>B</code> is initialized to zero — so at the start of training, <code>ΔW = 0</code> and the model behaves exactly like the pre-trained base.</p>
+
+            <h3>Scaling Factor α/r</h3>
+            <p>
+                The scaling factor <code>α/r</code> controls the magnitude of the LoRA update. In practice, <code>α</code> is typically set to <code>2r</code> (so the ratio is 2), meaning the LoRA update is roughly twice the magnitude of the rank alone. This hyperparameter can be tuned — higher <code>α</code> means stronger adaptation but higher risk of overfitting.
+            </p>
+
+            <h3>Which Layers to Adapt?</h3>
+            <p>
+                The original paper applies LoRA only to the <strong>attention weights</strong> (<code>W_q</code> and <code>W_v</code>), freezing <code>W_k</code> and <code>W_o</code>. This is the most parameter-efficient configuration. However, more recent work (including my own Astra paper!) shows that adapting <strong>all linear layers</strong> (attention + FFN) often yields better performance at a modest parameter increase.
+            </p>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- 4. MAIN CONTENT                        -->
+        <!-- ═══════════════════════════════════════ -->
+        <div class="study-section">
+            <h2>Main Content <span class="zh">/ 主要内容</span></h2>
+
+            <h3>Why Low Rank Works</h3>
+            <p>
+                The Aghajanyan et al. (2021) "Intrinsic Dimensionality" paper showed that you can fine-tune a model in a <em>random subspace</em> of much lower dimension than the full parameter space and still achieve ~90% of full fine-tuning performance. For example, a 1.5B-parameter model might only need ~200 parameters in the right subspace to solve a given task.
+            </p>
+            <p>
+                LoRA operationalizes this insight: instead of finding a random subspace, it <em>learns</em> the optimal low-rank subspace during training. The matrices <code>A</code> and <code>B</code> together define this subspace — <code>A</code> projects the input into a low-dimensional space, and <code>B</code> projects back up. The learned subspace is task-specific and captures the directions of greatest change needed for adaptation.
+            </p>
+
+            <h3>Practical Implementation (HuggingFace PEFT)</h3>
+            <div class="code-block">
+<span class="comment"># Minimal LoRA setup with HuggingFace PEFT</span>
+<span class="keyword">from</span> peft <span class="keyword">import</span> LoraConfig, get_peft_model
+<span class="keyword">from</span> transformers <span class="keyword">import</span> AutoModelForCausalLM
+
+model = AutoModelForCausalLM.from_pretrained(<span class="string">"meta-llama/Llama-2-7b-hf"</span>)
+
+lora_config = LoraConfig(
+    r=<span class="string">8</span>,                        <span class="comment"># Rank — higher = more capacity, more params</span>
+    lora_alpha=<span class="string">16</span>,                 <span class="comment"># Scaling factor (typically 2× rank)</span>
+    target_modules=[<span class="string">"q_proj"</span>, <span class="string">"v_proj"</span>],  <span class="comment"># Which layers to adapt</span>
+    lora_dropout=<span class="string">0.05</span>,              <span class="comment"># Dropout for regularization</span>
+    task_type=<span class="string">"CAUSAL_LM"</span>
+)
+
+model = get_peft_model(model, lora_config)
+model.print_trainable_parameters()
+<span class="comment"># trainable params: 4,194,304 || all params: 6,742,609,920 || trainable%: 0.0622</span>
+            </div>
+
+            <h3>Merging for Inference</h3>
+            <p>
+                After training, LoRA weights can be merged into the base model: <code>W' = W + (α/r)·BA</code>. This means inference is <strong>identical in speed and memory</strong> to the base model — unlike adapter layers which add sequential computation. You can also keep multiple LoRA adapters and hot-swap them at inference time by adding/subtracting the merged deltas.
+            </p>
+
+            <h3>LoRA Variants &amp; Extensions</h3>
+            <ul>
+                <li><strong>QLoRA</strong> (Dettmers et al., 2023): Combines LoRA with 4-bit quantization. Fine-tune a 65B model on a single 48GB GPU.</li>
+                <li><strong>DoRA</strong> (Liu et al., 2024): Decomposes weights into magnitude and direction, applying LoRA only to the directional component. Consistently outperforms vanilla LoRA.</li>
+                <li><strong>LoRA+</strong> (Hayou et al., 2024): Uses different learning rates for <code>A</code> and <code>B</code> matrices, improving convergence speed.</li>
+                <li><strong>Astra</strong> (Liu et al., 2026): Uses activation-space tail eigenvectors instead of random initialization for the low-rank subspace — our work!</li>
+            </ul>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- 5. REFERENCES                          -->
+        <!-- ═══════════════════════════════════════ -->
+        <div class="study-section">
+            <h2>References <span class="zh">/ 参考文献</span></h2>
+            <ul class="ref-list">
+                <li>
+                    <span class="ref-tag">Paper</span>
+                    <a href="https://arxiv.org/abs/2106.09685" target="_blank" rel="noopener">LoRA: Low-Rank Adaptation of Large Language Models</a>
+                    — Hu et al., ICLR 2022
+                </li>
+                <li>
+                    <span class="ref-tag">Paper</span>
+                    <a href="https://arxiv.org/abs/2012.13255" target="_blank" rel="noopener">Intrinsic Dimensionality Explains the Effectiveness of Language Model Fine-Tuning</a>
+                    — Aghajanyan et al., ACL 2021
+                </li>
+                <li>
+                    <span class="ref-tag">Paper</span>
+                    <a href="https://arxiv.org/abs/2305.14314" target="_blank" rel="noopener">QLoRA: Efficient Finetuning of Quantized LLMs</a>
+                    — Dettmers et al., NeurIPS 2023
+                </li>
+                <li>
+                    <span class="ref-tag">Paper</span>
+                    <a href="https://arxiv.org/abs/2602.19111" target="_blank" rel="noopener">Astra: Activation-Space Tail-Eigenvector Low-Rank Adaptation of LLMs</a>
+                    — Liu et al., ACL 2026 Findings
+                </li>
+                <li>
+                    <span class="ref-tag">Code</span>
+                    <a href="https://github.com/huggingface/peft" target="_blank" rel="noopener">HuggingFace PEFT</a>
+                    — Official LoRA implementation
+                </li>
+            </ul>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- 6. KEY TAKEAWAYS                       -->
+        <!-- ═══════════════════════════════════════ -->
+        <div class="study-section">
+            <h2>Key Takeaways <span class="zh">/ 要点总结</span></h2>
+            <ol>
+                <li>LoRA constrains weight updates to a <strong>low-rank subspace</strong> <code>ΔW = BA</code>, reducing trainable parameters by orders of magnitude with negligible performance loss.</li>
+                <li>The low-rank assumption is justified by the <strong>intrinsic dimensionality</strong> hypothesis — tasks live on low-dimensional manifolds within the full parameter space.</li>
+                <li>LoRA adds <strong>zero inference latency</strong> because the low-rank matrices can be merged into the frozen weights: <code>W' = W + BA</code>.</li>
+                <li>The scaling factor <code>α/r</code> and rank <code>r</code> are the two most important hyperparameters — start with <code>r=8, α=16</code> and tune from there.</li>
+                <li>The choice of <strong>which layers to adapt</strong> matters — attention weights (<code>W_q, W_v</code>) are the most efficient; adapting all linear layers yields the best performance.</li>
+            </ol>
+        </div>
+
+        <p style="text-align:center;margin-top:32px;display:flex;justify-content:center;gap:24px;">
+            <a href="../index.html" style="color:var(--text-muted);font-size:13px;text-decoration:none;">
+                ← Study Notes / 返回学习笔记
+            </a>
+            <a href="../../../index.html" style="color:var(--text-muted);font-size:13px;text-decoration:none;">
+                Blog / 博客
+            </a>
+        </p>
+
+    </div>
+
+    <script src="../../../../site.js"></script>
+
+</body>
+</html>

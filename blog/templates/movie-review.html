@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- REPLACE: Set your movie title as the page title   -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <title>Movie Review: [English Title] — Kainan Liu</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%238a9a8b'/%3E%3Crect x='9' y='8' width='14' height='16' rx='2' fill='%23f5f1ed'/%3E%3Cline x1='12' y1='12' x2='20' y2='12' stroke='%238a9a8b' stroke-width='1.2'/%3E%3Cline x1='12' y1='15' x2='20' y2='15' stroke='%238a9a8b' stroke-width='1.2'/%3E%3Cline x1='12' y1='18' x2='17' y2='18' stroke='%238a9a8b' stroke-width='1.2'/%3E%3C/svg%3E">
+</head>
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Animated Background Orbs -->
+    <div class="bg-mesh">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <!-- Top Navigation -->
+    <header class="site-header">
+        <div class="nav-inner">
+            <a href="../../../index.html" class="nav-logo">
+                <span class="nav-logo-dot"></span>
+                <span class="nav-logo-text">Kainan Liu</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../../../index.html">About</a></li>
+                    <li><a href="../../../publications.html">Publications</a></li>
+                    <li><a href="../../../experience.html">Experience</a></li>
+                    <li><a href="../../index.html">Blog</a></li>
+                    <li><a href="../../../cv.html">CV</a></li>
+                    <li>
+                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page">
+
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- MOVIE HEADER                                   -->
+        <!-- REPLACE: poster image, titles, director, year  -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <div class="movie-header">
+            <div class="movie-poster">
+                <!--
+                REPLACE: Add your poster image
+                <img src="../../../assets/posters/your-movie.jpg" alt="[Movie Title] Poster">
+                -->
+                <div class="movie-poster-placeholder">🎬</div>
+            </div>
+            <div class="movie-meta">
+                <div class="blog-category-tag" style="margin-bottom:8px;">Movie Review</div>
+                <h1 class="movie-title-en">[English Movie Title]</h1>
+                <div class="movie-title-zh">[中文电影名 / Chinese Title]</div>
+                <div class="movie-info-row">
+                    <div class="movie-info-item"><strong>Director:</strong> [Name]</div>
+                    <div class="movie-info-item"><strong>Year:</strong> [YYYY]</div>
+                    <div class="movie-info-item"><strong>Genre:</strong> [Genre]</div>
+                    <div class="movie-info-item"><strong>Runtime:</strong> [XXX min]</div>
+                </div>
+                <div class="movie-info-row">
+                    <div class="movie-info-item"><strong>Watched:</strong> [YYYY-MM-DD]</div>
+                    <div class="movie-info-item"><strong>Language:</strong> [Language]</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- 1. INTRODUCTION / 电影简介                      -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <div class="movie-section" id="intro">
+            <h2 class="movie-section-title">
+                Introduction
+                <span class="movie-section-title-zh">/ 电影简介</span>
+            </h2>
+            <!--
+            REPLACE: Write a brief synopsis of the movie (no major spoilers).
+            写一段简短的电影摘要（避免剧透）。
+
+            Example:
+            <p>[Your synopsis here — 2-3 paragraphs recommended.]</p>
+            -->
+            <p style="color:var(--text-muted); font-style:italic;">
+                [Write your movie synopsis here. Keep it brief — 2 to 3 paragraphs, no major spoilers.
+                在此处写下电影摘要。保持简洁，2-3段即可，避免重大剧透。]
+            </p>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- 2. REVIEW / 影评                                -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <div class="movie-section" id="review">
+            <h2 class="movie-section-title">
+                Review
+                <span class="movie-section-title-zh">/ 影评</span>
+            </h2>
+            <!--
+            REPLACE: Write your main review here. This is the core of your post.
+            Discuss themes, performances, directing, cinematography, music, etc.
+            在此处写下主要影评。这是文章的核心部分。
+            可以讨论主题、表演、导演、摄影、音乐等。
+
+            Example:
+            <p>[Your review paragraph 1...]</p>
+            <p>[Your review paragraph 2...]</p>
+            <p>[Your review paragraph 3...]</p>
+            -->
+            <p style="color:var(--text-muted); font-style:italic;">
+                [Write your main review here. Discuss themes, performances, direction, cinematography, music — whatever stood out to you.
+                在此处写下主要影评。讨论主题、表演、导演、摄影、音乐等任何让你印象深刻的内容。]
+            </p>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- 3. DETAILS / 细节分析                           -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <div class="movie-section" id="details">
+            <h2 class="movie-section-title">
+                Details &amp; Analysis
+                <span class="movie-section-title-zh">/ 细节分析</span>
+            </h2>
+            <!--
+            REPLACE: Deep-dive into specific details — camera work, symbolism,
+            dialogue, narrative structure, Easter eggs, etc.
+            深入分析特定细节——镜头语言、象征意义、对话、叙事结构、彩蛋等。
+
+            Example:
+            <p>[Your detailed analysis...]</p>
+            -->
+            <p style="color:var(--text-muted); font-style:italic;">
+                [Dive into specific details — camera work, symbolism, dialogue choices, narrative structure, foreshadowing, Easter eggs — whatever rewards a closer look.
+                深入分析具体细节——镜头语言、象征意义、对白设计、叙事结构、伏笔、彩蛋等——任何值得细细品味的内容。]
+            </p>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- 4. FLAWS / 缺点                                 -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <div class="movie-section" id="flaws">
+            <h2 class="movie-section-title">
+                Flaws &amp; Critiques
+                <span class="movie-section-title-zh">/ 缺点与批评</span>
+            </h2>
+            <!--
+            REPLACE: What didn't work? Be honest and constructive.
+            What could have been improved?
+            哪些地方不尽如人意？坦诚且建设性地评价。
+            哪些方面可以改进？
+
+            Example:
+            <div class="movie-procon">
+                <div class="movie-con">
+                    <h5>What Could Be Better / 可改进之处</h5>
+                    <ul>
+                        <li>[Your critique point 1]</li>
+                        <li>[Your critique point 2]</li>
+                    </ul>
+                </div>
+            </div>
+            -->
+            <p style="color:var(--text-muted); font-style:italic;">
+                [What didn't work for you? Be honest and constructive. Use the .movie-con list format below for specific points.
+                哪些地方你觉得不好？坦诚且建设性地评价。下面用 .movie-con 列表格式列出具体观点。]
+            </p>
+            <div class="movie-procon" style="margin-top:12px;">
+                <div class="movie-con">
+                    <h5>What Could Be Better / 可改进之处</h5>
+                    <ul>
+                        <li>[Critique point 1]</li>
+                        <li>[Critique point 2]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- 5. OVERALL ASSESSMENT / 综合评价                -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <div class="movie-section" id="overall">
+            <h2 class="movie-section-title">
+                Overall Assessment
+                <span class="movie-section-title-zh">/ 综合评价</span>
+            </h2>
+            <!--
+            REPLACE: Summarize your overall impression.
+            Who would enjoy this movie? Final thoughts.
+            总结整体印象。什么样的观众会喜欢这部电影？最后的总结。
+            -->
+            <p style="color:var(--text-muted); font-style:italic;">
+                [Summarize your overall impression. Who would enjoy this film? What's the lasting takeaway?
+                总结你的整体印象。什么样的观众会喜欢这部电影？有什么持久的感悟？]
+            </p>
+
+            <!-- Pro/Con Summary -->
+            <div class="movie-procon">
+                <div class="movie-pro">
+                    <h5>Highlights / 亮点</h5>
+                    <ul>
+                        <!-- REPLACE: List 2-4 things you loved -->
+                        <li>[Highlight 1]</li>
+                        <li>[Highlight 2]</li>
+                        <li>[Highlight 3]</li>
+                    </ul>
+                </div>
+                <div class="movie-con">
+                    <h5>Drawbacks / 不足</h5>
+                    <ul>
+                        <!-- REPLACE: List 2-3 things that could be better -->
+                        <li>[Drawback 1]</li>
+                        <li>[Drawback 2]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- 6. RATING / 评分                                -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <div class="movie-section" id="rating">
+            <h2 class="movie-section-title">
+                Rating
+                <span class="movie-section-title-zh">/ 评分</span>
+            </h2>
+
+            <!-- Overall Score -->
+            <div class="rating-overall">
+                <div class="rating-score-big">
+                    <!-- REPLACE: Your overall score out of 10 -->
+                    [X.X]
+                </div>
+                <div>
+                    <div class="rating-stars-big">
+                        <!--
+                        REPLACE: Fill stars based on your score.
+                        Use ★ for filled stars, ☆ for empty.
+                        10-point scale → 5 stars:
+                          9-10: ★★★★★
+                          7-8:  ★★★★☆
+                          5-6:  ★★★☆☆
+                          3-4:  ★★☆☆☆
+                          1-2:  ★☆☆☆☆
+                        -->
+                        ★★★★★
+                    </div>
+                    <div class="rating-label">out of 10 / 满分10分</div>
+                </div>
+            </div>
+
+            <!-- Breakdown Table -->
+            <!-- REPLACE: Adjust the widths (second value) to match your scores.
+                 Each row: label | bar width % | numeric score -->
+            <table class="rating-table">
+                <tr>
+                    <th>Story <span style="font-size:11px;color:var(--text-muted);">故事</span></th>
+                    <td>
+                        <div class="rating-bar-wrap">
+                            <div class="rating-bar"><div class="rating-bar-fill" style="width:80%;"></div></div>
+                            <span class="rating-bar-num">8.0</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Acting <span style="font-size:11px;color:var(--text-muted);">表演</span></th>
+                    <td>
+                        <div class="rating-bar-wrap">
+                            <div class="rating-bar"><div class="rating-bar-fill" style="width:80%;"></div></div>
+                            <span class="rating-bar-num">8.0</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Cinematography <span style="font-size:11px;color:var(--text-muted);">摄影</span></th>
+                    <td>
+                        <div class="rating-bar-wrap">
+                            <div class="rating-bar"><div class="rating-bar-fill" style="width:80%;"></div></div>
+                            <span class="rating-bar-num">8.0</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Music <span style="font-size:11px;color:var(--text-muted);">音乐</span></th>
+                    <td>
+                        <div class="rating-bar-wrap">
+                            <div class="rating-bar"><div class="rating-bar-fill" style="width:80%;"></div></div>
+                            <span class="rating-bar-num">8.0</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="border-top:2px solid var(--border);">
+                    <th><strong>Overall <span style="font-size:11px;color:var(--text-muted);">总分</span></strong></th>
+                    <td>
+                        <div class="rating-bar-wrap">
+                            <div class="rating-bar"><div class="rating-bar-fill" style="width:80%;"></div></div>
+                            <span class="rating-bar-num"><strong>8.0</strong></span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- Back to Blog Link                             -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <p style="text-align:center;margin-top:32px;">
+            <a href="../../index.html" style="color:var(--text-muted);font-size:13px;text-decoration:none;transition:color 0.2s;">
+                ← Back to Blog / 返回博客
+            </a>
+        </p>
+
+    </div>
+
+    <script src="../../../site.js"></script>
+    <script>
+        // ── Animate rating bars on scroll ──
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.rating-bar-fill').forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0%';
+                        requestAnimationFrame(() => {
+                            bar.style.width = width;
+                        });
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const ratingSection = document.getElementById('rating');
+        if (ratingSection) observer.observe(ratingSection);
+    
+    
+    </script>
+
+</body>
+</html>

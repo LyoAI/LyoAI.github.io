@@ -10,3 +10,11 @@ wheels/
 .venv
 assets/problems
 problems.md
+
+# macOS
+.DS_Store
+
+# Personal documents — never publish to the public site
+assets/教育部学历证书电子注册备案表_刘恺楠.pdf
+assets/教育部学籍在线验证报告_刘恺楠.pdf
+assets/简历 — 刘恺楠.pdf
