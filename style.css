@@ -762,13 +762,16 @@ body {
     display: block;
 }
 .blog-card-cover-placeholder {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 48px;
+    font-size: 56px;
     color: var(--accent);
-    opacity: 0.25;
+    opacity: 0.3;
 }
+.blog-card-cover img.cover-poster { object-position: 50% 18%; }
 
 .blog-card-body {
     padding: 20px;
@@ -785,6 +788,7 @@ body {
 }
 
 .blog-category-tag {
+    display: inline-block; /* avoid block <div> tags stretching a tinted bar across the header */
     font-size: 10px;
     font-weight: 700;
     color: var(--accent);
@@ -1245,6 +1249,8 @@ code {
     gap: 16px;
     margin-top: 8px;
 }
+/* A lone pros- or cons-only block gets the full row */
+.movie-procon:has(> :only-child) { grid-template-columns: 1fr; }
 
 .movie-pro,
 .movie-con {
@@ -1385,6 +1391,16 @@ code {
 
 @media (max-width: 640px) {
     .nav-logo-text { display: none; }
+    /* Let the nav wrap to a second row instead of overflowing the viewport */
+    .nav-inner {
+        flex-wrap: wrap;
+        height: auto;
+        min-height: var(--nav-height);
+        justify-content: center;
+        padding: 6px 12px 8px;
+        row-gap: 2px;
+    }
+    .nav-links { flex-wrap: wrap; justify-content: center; }
     .nav-links a { padding: 8px 12px; font-size: 13px; }
     .page { padding: 16px; }
     .page-home { gap: 24px; }

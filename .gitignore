@@ -18,3 +18,7 @@ problems.md
 assets/教育部学历证书电子注册备案表_刘恺楠.pdf
 assets/教育部学籍在线验证报告_刘恺楠.pdf
 assets/简历 — 刘恺楠.pdf
+
+# Blog: kept local-only for now (content not finished).
+# To (re)publish: delete the "/blog/" line below, then `git add blog/` and commit.
+/blog/
