@@ -306,6 +306,17 @@ body {
 }
 .news-text { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 .news-text strong { color: var(--text-primary); }
+.news-text a { color: var(--accent); text-decoration: none; font-weight: 500; }
+.news-text a:hover { text-decoration: underline; }
+.news-text code {
+    font-size: 12px;
+    font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
+    background: var(--accent-glow);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 5px;
+    color: var(--text-primary);
+}
 .news-toggle-btn {
     margin-top: 12px; padding: 6px 14px;
     background: var(--accent-glow); border: 1px solid var(--border);
