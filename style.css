@@ -315,6 +315,10 @@ body {
     transition: all 0.2s ease;
 }
 .profile-link:hover { background: var(--accent-glow); color: var(--accent); }
+button.profile-link {
+    width: 100%; background: none; border: none;
+    font-family: inherit; text-align: left; cursor: pointer;
+}
 .profile-link span.text-muted { color: var(--text-muted); }
 .profile-link svg {
     flex-shrink: 0; width: 18px; height: 18px;
